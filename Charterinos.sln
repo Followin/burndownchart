@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6D78684E-BC80-4F28-BCA8-01620B25CD6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A903CAF5-2DD9-40CC-BAEB-9EA5724D47FC}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Charterinos", "src\Charterinos\Charterinos.xproj", "{8451A0B4-DEF2-4836-8747-E2AEE60CB414}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8451A0B4-DEF2-4836-8747-E2AEE60CB414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8451A0B4-DEF2-4836-8747-E2AEE60CB414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8451A0B4-DEF2-4836-8747-E2AEE60CB414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8451A0B4-DEF2-4836-8747-E2AEE60CB414}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8451A0B4-DEF2-4836-8747-E2AEE60CB414} = {6D78684E-BC80-4F28-BCA8-01620B25CD6E}
+	EndGlobalSection
+EndGlobal
