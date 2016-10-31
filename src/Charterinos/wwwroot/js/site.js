@@ -1,4 +1,19 @@
-﻿$(function() {
+﻿Object.defineProperty(Object.prototype,
+    "forEachOwnProperty",
+    {
+        value: function(action) {
+            for (var key in this) {
+                if (this.hasOwnProperty(key)) {
+                    action(this[key], key);
+                }
+            }
+        },
+        writable: true,
+        configurable: true,
+        enumerable: false
+    });
+
+$(function() {
     var canvas = $("#chart");
     var ctx = canvas[0];
     Date.MIN_VALUE = new Date(-8640000000000000);
@@ -9,20 +24,15 @@
             url: canvas.data("url")
         })
         .then(function(data) {
-            var i, j;
             var result = [],
                 maxValue = Number.MIN_VALUE,
                 minDate = Date.MAX_VALUE,
                 maxDate = Date.MIN_VALUE;
 
-            var dataKeys = Object.getOwnPropertyNames(data);
-            for (i = 0; i < dataKeys.length; i++) {
-                var chartDict = data[dataKeys[i]];
-                var chartDictKeys = Object.getOwnPropertyNames(chartDict);
+            data.forEachOwnProperty(function(chartDict, chartName) {
                 var chartData = [];
-                for (j = 0; j < chartDictKeys.length; j++) {
-                    var date = new Date(chartDictKeys[j]);
-                    var value = chartDict[chartDictKeys[j]];
+                chartDict.forEachOwnProperty(function(value, date) {
+                    date = new Date(date);
 
                     chartData.push({
                         x: date,
@@ -38,16 +48,15 @@
                     if (value > maxValue) {
                         maxValue = value;
                     }
-                }
+                });
+
                 result.push({
-                    label: dataKeys[i],
+                    label: chartName,
                     data: chartData,
                     borderColor: "#" + random.hexColor(),
                     fill: false
                 });
-            }
-
-            console.log(minDate, maxDate, maxValue);
+            });
 
             result.push({
                 label: "Ideal",
