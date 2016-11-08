@@ -1,5 +1,5 @@
---temp-output:c:\Users\Pavlo_Yeremenko\Documents\Visual Studio 2015\Projects\Charterinos\src\Charterinos\obj\Debug\netcoreapp1.0\
---out:c:\Users\Pavlo_Yeremenko\Documents\Visual Studio 2015\Projects\Charterinos\src\Charterinos\bin\Debug\netcoreapp1.0\Charterinos.dll
+--temp-output:C:\Users\Pavlo_Yeremenko\documents\visual studio 2015\Projects\Charterinos\src\Charterinos\obj\Debug\netcoreapp1.0\
+--out:C:\Users\Pavlo_Yeremenko\documents\visual studio 2015\Projects\Charterinos\src\Charterinos\bin\Debug\netcoreapp1.0\Charterinos.dll
 --define:DEBUG
 --define:TRACE
 --define:NETCOREAPP1_0
@@ -190,8 +190,8 @@
 --reference:C:\Users\Pavlo_Yeremenko\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\Pavlo_Yeremenko\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\Pavlo_Yeremenko\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
---resource:"c:\Users\Pavlo_Yeremenko\Documents\Visual Studio 2015\Projects\Charterinos\src\Charterinos\obj\Debug\netcoreapp1.0\Charterinosdotnet-compile.deps.json",Charterinos.deps.json
-c:\Users\Pavlo_Yeremenko\Documents\Visual Studio 2015\Projects\Charterinos\src\Charterinos\Program.cs
-c:\Users\Pavlo_Yeremenko\Documents\Visual Studio 2015\Projects\Charterinos\src\Charterinos\Startup.cs
-c:\Users\Pavlo_Yeremenko\Documents\Visual Studio 2015\Projects\Charterinos\src\Charterinos\Controllers\HomeController.cs
-c:\Users\Pavlo_Yeremenko\Documents\Visual Studio 2015\Projects\Charterinos\src\Charterinos\Data\Data.cs
+--resource:"C:\Users\Pavlo_Yeremenko\documents\visual studio 2015\Projects\Charterinos\src\Charterinos\obj\Debug\netcoreapp1.0\Charterinosdotnet-compile.deps.json",Charterinos.deps.json
+C:\Users\Pavlo_Yeremenko\documents\visual studio 2015\Projects\Charterinos\src\Charterinos\Program.cs
+C:\Users\Pavlo_Yeremenko\documents\visual studio 2015\Projects\Charterinos\src\Charterinos\Startup.cs
+C:\Users\Pavlo_Yeremenko\documents\visual studio 2015\Projects\Charterinos\src\Charterinos\Controllers\HomeController.cs
+C:\Users\Pavlo_Yeremenko\documents\visual studio 2015\Projects\Charterinos\src\Charterinos\Data\Data.cs

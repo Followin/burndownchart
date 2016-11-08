@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Charterinos.Data
 {
@@ -7,19 +8,33 @@ namespace Charterinos.Data
 	{
 		public static Dictionary<string, Dictionary<DateTime, int>> Burndown => new Dictionary<string, Dictionary<DateTime, int>>
 		{
-			["First"] = new Dictionary<DateTime, int>
-			{
-				[DateTime.Now] = 15,
-				[DateTime.Now.AddDays(5)] = 10,
-				[DateTime.Now.AddDays(10)] = 5
-			},
-
-			["Second"] = new Dictionary<DateTime, int>
-			{
-				[DateTime.Now] = 12,
-				[DateTime.Now.AddDays(3)] = 10,
-				[DateTime.Now.AddDays(7)] = 3
-			} 
+			["First"] = GetRandomDict(),
+			["Second"] = GetRandomDict()
 		};
+
+		public static Random Random = new Random();
+
+		public static Dictionary<DateTime, int> GetRandomDict()
+		{
+			var values = new List<int>();
+			var dates = new List<DateTime>();
+			for (var i = 0; i < 50; i++)
+			{
+				values.Add(Random.Next(1, 100));
+				dates.Add(new DateTime(2016, Random.Next(1, 12), Random.Next(1,28)));
+			}
+
+			values = values.OrderByDescending(x => x).ToList();
+			dates = dates.OrderBy(x => x).Distinct().ToList();
+
+			var result = new Dictionary<DateTime, int>();
+
+			for (var i = 0; i < Math.Min(values.Count, dates.Count); i++)
+			{
+				result.Add(dates[i], values[i]);
+			}
+
+			return result;
+		}
 	}
 }

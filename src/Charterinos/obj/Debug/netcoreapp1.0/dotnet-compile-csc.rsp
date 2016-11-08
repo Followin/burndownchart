@@ -7,8 +7,8 @@
 -debug:full
 -nostdlib
 -nologo
-"c:\Users\Pavlo_Yeremenko\Documents\Visual Studio 2015\Projects\Charterinos\src\Charterinos\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
--out:"c:\Users\Pavlo_Yeremenko\Documents\Visual Studio 2015\Projects\Charterinos\src\Charterinos\bin\Debug\netcoreapp1.0\Charterinos.dll"
+"C:\Users\Pavlo_Yeremenko\documents\visual studio 2015\Projects\Charterinos\src\Charterinos\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
+-out:"C:\Users\Pavlo_Yeremenko\documents\visual studio 2015\Projects\Charterinos\src\Charterinos\bin\Debug\netcoreapp1.0\Charterinos.dll"
 -r:"C:\Users\Pavlo_Yeremenko\.nuget\packages\Microsoft.AspNetCore.Antiforgery\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Antiforgery.dll"
 -r:"C:\Users\Pavlo_Yeremenko\.nuget\packages\Microsoft.AspNetCore.Authorization\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Authorization.dll"
 -r:"C:\Users\Pavlo_Yeremenko\.nuget\packages\Microsoft.AspNetCore.Cors\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Cors.dll"
@@ -186,8 +186,8 @@
 -r:"C:\Users\Pavlo_Yeremenko\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll"
 -r:"C:\Users\Pavlo_Yeremenko\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll"
 -r:"C:\Users\Pavlo_Yeremenko\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll"
--resource:"c:\Users\Pavlo_Yeremenko\Documents\Visual Studio 2015\Projects\Charterinos\src\Charterinos\obj\Debug\netcoreapp1.0\Charterinosdotnet-compile.deps.json",Charterinos.deps.json
-"c:\Users\Pavlo_Yeremenko\Documents\Visual Studio 2015\Projects\Charterinos\src\Charterinos\Program.cs"
-"c:\Users\Pavlo_Yeremenko\Documents\Visual Studio 2015\Projects\Charterinos\src\Charterinos\Startup.cs"
-"c:\Users\Pavlo_Yeremenko\Documents\Visual Studio 2015\Projects\Charterinos\src\Charterinos\Controllers\HomeController.cs"
-"c:\Users\Pavlo_Yeremenko\Documents\Visual Studio 2015\Projects\Charterinos\src\Charterinos\Data\Data.cs"
+-resource:"C:\Users\Pavlo_Yeremenko\documents\visual studio 2015\Projects\Charterinos\src\Charterinos\obj\Debug\netcoreapp1.0\Charterinosdotnet-compile.deps.json",Charterinos.deps.json
+"C:\Users\Pavlo_Yeremenko\documents\visual studio 2015\Projects\Charterinos\src\Charterinos\Program.cs"
+"C:\Users\Pavlo_Yeremenko\documents\visual studio 2015\Projects\Charterinos\src\Charterinos\Startup.cs"
+"C:\Users\Pavlo_Yeremenko\documents\visual studio 2015\Projects\Charterinos\src\Charterinos\Controllers\HomeController.cs"
+"C:\Users\Pavlo_Yeremenko\documents\visual studio 2015\Projects\Charterinos\src\Charterinos\Data\Data.cs"
