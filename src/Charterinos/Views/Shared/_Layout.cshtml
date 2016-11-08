@@ -24,12 +24,25 @@
 		<p>&copy; 2016 - Charterinos</p>
 	</footer>
 </div>
+
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 <script src="~/node_modules/highcharts/js/highstock.src.js"></script>
 <script src="~/node_modules/highcharts/modules/exporting.src.js"></script>
+
 <script src="~/js/init.js" asp-append-version="true"></script>
-<script src="~/js/utils/random.js" asp-append-version="true"></script>
+<!--Configs-->
+<script asp-src-include="~/js/configs/**/*.js" asp-append-version="true"></script>
+
+<!--Utils-->
+<script asp-src-include="~/js/utils/**/*.js" asp-append-version="true"></script>
+
+<!--Api-->
+<script asp-src-include="~/js/api/**/*.js" asp-append-version="true"></script>
+
+<!--Services-->
+<script asp-src-include="~/js/services/**/*.js" asp-append-version="true"></script>
+
 <script src="~/js/site.js" asp-append-version="true"></script>
 
 @RenderSection("scripts", required: false)

@@ -17,16 +17,12 @@ Date.MIN_VALUE = new Date(-8640000000000000);
 Date.MAX_VALUE = new Date(8640000000000000);
 
 var c = (function() {
-  var  services = { constructors: {}, activated: {} },
+  var services = { constructors: {}, activated: {} },
     main = {};
 
-  main.inject = function (module) {
+  main.inject = function(module) {
     return function() {
-      if (!module.inject) {
-        return module.call(module);
-      }
-
-      var activatedDependecies = module.inject.map(activate);
+      var activatedDependecies = module.inject && module.inject.map(activate) || [];
 
       return module.apply(module, activatedDependecies);
     }
@@ -39,23 +35,24 @@ var c = (function() {
   return main;
 
   function activate(name) {
-    var Constructor, i;
+    var Constructor, i, activatedDependencies;
 
-    if (name in services.activated) {
-      return services.activated[name];
+    if (!(name in services.activated) && name in services.constructors) {
+      Constructor = services.constructors[name];
+      activatedDependencies = Constructor.inject && Constructor.inject.map(activate) || [];
+      services.activated[name] = applyNew(Constructor, activatedDependencies);
     }
 
-    if (name in services.constructors) {
-      Constructor = services.constructors[name];
-      if (!('inject' in Constructor)) {
-        services.activated[name] = new Constructor();
-        return services.activated[name];
+    return services.activated[name];
+  }
+
+  function applyNew(constructor, args) {
+      function F(args) {
+        return constructor.apply(this, args);
       }
 
-      var activatedDependencies = Constructor.inject.map(activate);
+      F.prototype = constructor.prototype;
 
-      services.activated[name] = Constructor.apply({}, activatedDependencies);
-      return services.activated[name];
-    }
+      return new F(args);
   }
 }());
