@@ -9,13 +9,21 @@
   DataService.inject = ["DataMapper", "DataRepository"];
 
   DataService.prototype.getBurndown = function() {
-    return new Promise(function(resolve, reject) {
-      dataRepository.getData()
-        .then(function(data) {
-            resolve(dataMapper.mapBurndown(data));
-          }, reject);
-    });
+    return combine(dataRepository.getBurndown, dataMapper.mapBurndown);
+  }
+
+  DataService.prototype.getEpics = function() {
+    return combine(dataRepository.getEpics, dataMapper.mapEpics);
   }
 
   c.service("DataService", DataService);
+
+  function combine(repoFunc, mapperFunc) {
+    return new Promise(function(resolve, reject) {
+      repoFunc()
+        .then(function(data) {
+            resolve(mapperFunc(data));
+          }, reject);
+    });
+  }
 }());

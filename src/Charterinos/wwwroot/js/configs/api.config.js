@@ -1,5 +1,6 @@
 ﻿c.service("ApiConfig", function() {
   return {
-    burndown: "/home/getdata"
+    burndown: "/data/burndown",
+    epics: "/data/epics"
   };
 })

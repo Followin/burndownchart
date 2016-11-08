@@ -8,10 +8,5 @@ namespace Charterinos.Controllers
 		{
 			return View();
 		}
-
-		public IActionResult GetData()
-		{
-			return Json(Data.Data.Burndown);
-		}
 	}
 }

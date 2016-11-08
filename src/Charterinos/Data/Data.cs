@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Charterinos.Models;
 
 namespace Charterinos.Data
 {
@@ -10,6 +11,38 @@ namespace Charterinos.Data
 		{
 			["First"] = GetRandomDict(),
 			["Second"] = GetRandomDict()
+		};
+
+		public static Dictionary<string, Epic> Epics => new Dictionary<string, Epic>
+		{
+			["First"] = new Epic
+			{
+				Done = Random.Next(1, 10),
+				InProgress = Random.Next(1, 10),
+				Crs = Random.Next(1, 10),
+				ToDo = Random.Next(1, 10)
+			},
+			["Second"] = new Epic
+			{
+				Done = Random.Next(1, 10),
+				InProgress = Random.Next(1, 10),
+				Crs = Random.Next(1, 10),
+				ToDo = Random.Next(1, 10)
+			},
+			["Third"] = new Epic
+			{
+				Done = Random.Next(1, 10),
+				InProgress = Random.Next(1, 10),
+				Crs = Random.Next(1, 10),
+				ToDo = Random.Next(1, 10)
+			},
+			["Fourth"] = new Epic
+			{
+				Done = Random.Next(1, 10),
+				InProgress = Random.Next(1, 10),
+				Crs = Random.Next(1, 10),
+				ToDo = Random.Next(1, 10)
+			}
 		};
 
 		public static Random Random = new Random();

@@ -1,11 +1,10 @@
 ﻿(function() {
   var module = function(dataService) {
     $(function() {
-      var $container = $("#container");
 
       dataService.getBurndown()
         .then(function(data) {
-          $container.highcharts('StockChart', {
+          $("#burndown").highcharts('StockChart', {
               chart: {
                 zoomType: 'x'
               },
@@ -20,6 +19,33 @@
             });
         });
 
+      dataService.getEpics()
+        .then(function(data) {
+          $("#epics").highcharts({
+              chart: {
+                type: 'column'
+              },
+              title: {
+                text: 'Epics'
+              },
+              xAxis: {
+                categories: data.epics
+              },
+              yAxis: {
+                allowDecimals: false,
+                min: 0,
+                title: {
+                  text: 'Story points'
+                }
+              },
+              plotOptions: {
+                column: {
+                  stacking: "normal"
+                }
+              },
+              series: data.data
+            });
+        });
     });
   };
 
