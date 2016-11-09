@@ -16,6 +16,10 @@
     return combine(dataRepository.getEpics, dataMapper.mapEpics);
   }
 
+  DataService.prototype.getTotal = function() {
+    return combine(dataRepository.getEpics, dataMapper.mapTotal);
+  }
+
   c.service("DataService", DataService);
 
   function combine(repoFunc, mapperFunc) {

@@ -62,19 +62,38 @@
       var 
         done = { name: "Done", stack: "main", data: [] },
         inProgress = { name: "In Progress", stack: "main", data: [] },
-        todo = { name: "To Do", stack: "main", data: [] },
         crs = { name: "CRs", stack: "crs", data: [] },
-        result = { epics: [], data: [done, inProgress, todo, crs]}
+        result = { epics: [], data: [inProgress, crs, done]}
 
       data.forEachOwnProperty(function(epic, epicName) {
+        var spSum = epic.done + epic.inProgress + epic.toDo;
+
         result.epics.push(epicName);
-        done.data.push({ y: epic.done, color: "#00FF00" });
-        inProgress.data.push(epic.inProgress);
-        todo.data.push(epic.toDo);
+
+        done.data.push({ y: Math.round(epic.done / spSum * 100), color: "#00FF00" });
+        inProgress.data.push(Math.round(epic.inProgress / spSum * 100));
         crs.data.push(epic.crs);
       });
 
-      console.log(result)
+      return result;
+    }
+
+    DataMapper.prototype.mapTotal = function(data) {
+      var
+        doneTotal= 0 ,
+        inProgressTotal = 0,
+        spTotal = 0,
+        result = {};
+
+      data.forEachOwnProperty(function(epic) {
+        spTotal += (epic.done + epic.inProgress + epic.toDo);
+        doneTotal += epic.done;
+        inProgressTotal += epic.inProgress;
+      });
+
+      result.done = Math.round(doneTotal / spTotal * 100);
+      result.inProgress = Math.round(inProgressTotal / spTotal * 100);
+
       return result;
     }
 
