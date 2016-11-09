@@ -62,19 +62,19 @@
       var 
         done = { name: "Done", stack: "main", data: [] },
         inProgress = { name: "In Progress", stack: "main", data: [] },
+        toDo = { name: "To Do", stack: "main", data: [] },
         crs = { name: "CRs", stack: "crs", data: [] },
-        result = { epics: [], data: [inProgress, crs, done]}
+        result = { epics: [], data: [toDo, inProgress, crs, done]}
 
       data.forEachOwnProperty(function(epic, epicName) {
-        var spSum = epic.done + epic.inProgress + epic.toDo;
-
         result.epics.push(epicName);
 
-        done.data.push({ y: Math.round(epic.done / spSum * 100), color: "#00FF00" });
-        inProgress.data.push(Math.round(epic.inProgress / spSum * 100));
-        crs.data.push(epic.crs);
+        toDo.data.push({ y: epic.toDo, color: "#33b5e5" });
+        done.data.push({ y: epic.done, color: "#00C851" });
+        inProgress.data.push({ y: epic.inProgress, color: "#2BBBAD" });
+        crs.data.push({ y: epic.crs, color: "#ffbb33" });
       });
-
+      
       return result;
     }
 

@@ -1,4 +1,4 @@
-﻿(function() {
+﻿(function(){
   var module = function(dataService) {
     $(function() {
       buildBurndown($("#burndown"));
@@ -29,25 +29,24 @@
       dataService.getEpics()
         .then(function(data) {
           $element.highcharts({
-              chart: {
-                type: 'column'
-              },
+            chart: {
+              type: 'column'
+            },
+            title: {
+              text: 'Epics'
+            },
+            xAxis: {
+              categories: data.epics
+            },
+            yAxis: {
+              allowDecimals: false,
+              min: 0,
               title: {
-                text: 'Epics'
-              },
-              xAxis: {
-                categories: data.epics
-              },
-              yAxis: {
-                allowDecimals: false,
-                min: 0,
-                max: 100,
-                title: {
-                  text: "%"
-                }
-              },
-              plotOptions: {
-                column: {
+                text: "%"
+              }
+            },
+            plotOptions: {
+              column: {
                   stacking: "normal"
                 }
               },
