@@ -1,6 +1,7 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="js/api/data.service.js" />
 /// <reference path="js/configs/api.config.js" />
+/// <reference path="js/configs/colors.config.js" />
 /// <reference path="js/init.js" />
 /// <reference path="js/services/data.js" />
 /// <reference path="js/services/data.mapper.js" />

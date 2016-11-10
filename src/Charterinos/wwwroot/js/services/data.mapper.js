@@ -1,101 +1,107 @@
-﻿c.service("DataMapper",
-  function() {
-    function DataMapper() {};
+﻿(function() {
 
-    DataMapper.prototype.mapBurndown = function(data) {
-      var result = [],
-        maxValue = Number.MIN_VALUE,
-        minDate = Date.MAX_VALUE,
-        maxDate = Date.MIN_VALUE;
+  var colors;
 
-      data.forEachOwnProperty(function(chartDict, chartName) {
-        var chartData = [];
-        chartDict.forEachOwnProperty(function(value, date) {
-          date = new Date(date);
+  function DataMapper(colorConfig) { colors = colorConfig };
 
-          chartData.push([
-            date.getTime(),
-            value
-          ]);
+  DataMapper.inject = ["ColorConfig"];
 
-          if (date > maxDate) {
-            maxDate = date;
-          } else if (date < minDate) {
-            minDate = date;
-          }
+  c.service("DataMapper", DataMapper);
 
-          if (value > maxValue) {
-            maxValue = value;
-          }
-        });
+  DataMapper.prototype.mapBurndown = function(data) {
+    var result = [],
+      maxValue = Number.MIN_VALUE,
+      minDate = Date.MAX_VALUE,
+      maxDate = Date.MIN_VALUE;
 
-        result.push({
-          name: chartName,
-          data: chartData,
-          marker: {
-            enabled: true
-          },
-          tooltip: true,
-          shadow: true,
-          showInNavigator: true
-        });
+    data.forEachOwnProperty(function(chartDict, chartName) {
+      var chartData = [];
+      chartDict.forEachOwnProperty(function(value, date) {
+        date = new Date(date);
+
+        chartData.push([
+          date.getTime(),
+          value
+        ]);
+
+        if (date > maxDate) {
+          maxDate = date;
+        } else if (date < minDate) {
+          minDate = date;
+        }
+
+        if (value > maxValue) {
+          maxValue = value;
+        }
       });
 
       result.push({
-        name: "Ideal",
-        data: [
-          [
-            minDate.getTime(),
-            maxValue
-          ],
-          [
-            maxDate.getTime(),
-            0
-          ]
+        name: chartName,
+        data: chartData,
+        marker: {
+          enabled: true
+        },
+        tooltip: true,
+        shadow: true,
+        showInNavigator: true
+      });
+    });
+
+    result.push({
+      name: "Ideal",
+      data: [
+        [
+          minDate.getTime(),
+          maxValue
+        ],
+        [
+          maxDate.getTime(),
+          0
         ]
-      });
+      ]
+    });
 
-      return result;
-    };
+    return result;
+  };
 
-    DataMapper.prototype.mapEpics = function (data) {
-      var 
-        done = { name: "Done", stack: "main", data: [] },
-        inProgress = { name: "In Progress", stack: "main", data: [] },
-        toDo = { name: "To Do", stack: "main", data: [] },
-        crs = { name: "CRs", stack: "crs", data: [] },
-        result = { epics: [], data: [toDo, inProgress, crs, done]}
+  DataMapper.prototype.mapEpics = function(data) {
+    var
+      done = { name: "Done", stack: "main", data: [], color: colors.done },
+      inProgress = { name: "In Progress", stack: "main", data: [], color: colors.inProgress },
+      toDo = { name: "To Do", stack: "main", data: [], color: colors.toDo },
+      crs = { name: "CRs", stack: "crs", data: [], color: colors.crs },
+      result = { epics: [], data: [toDo, inProgress, crs, done] }
 
-      data.forEachOwnProperty(function(epic, epicName) {
-        result.epics.push(epicName);
+    data.forEachOwnProperty(function(epic, epicName) {
+      result.epics.push(epicName);
 
-        toDo.data.push({ y: epic.toDo, color: "#33b5e5" });
-        done.data.push({ y: epic.done, color: "#00C851" });
-        inProgress.data.push({ y: epic.inProgress, color: "#2BBBAD" });
-        crs.data.push({ y: epic.crs, color: "#ffbb33" });
-      });
-      
-      return result;
-    }
+      toDo.data.push(epic.toDo);
+      done.data.push(epic.done);
+      inProgress.data.push(epic.inProgress);
+      crs.data.push(epic.crs);
+    });
 
-    DataMapper.prototype.mapTotal = function(data) {
-      var
-        doneTotal= 0 ,
-        inProgressTotal = 0,
-        spTotal = 0,
-        result = {};
+    return result;
+  }
 
-      data.forEachOwnProperty(function(epic) {
-        spTotal += (epic.done + epic.inProgress + epic.toDo);
-        doneTotal += epic.done;
-        inProgressTotal += epic.inProgress;
-      });
+  DataMapper.prototype.mapTotal = function(data) {
+    var
+      doneTotal = 0,
+      inProgressTotal = 0,
+      toDoTotal = 0,
+      spTotal = 0,
+      result = {};
 
-      result.done = Math.round(doneTotal / spTotal * 100);
-      result.inProgress = Math.round(inProgressTotal / spTotal * 100);
+    data.forEachOwnProperty(function(epic) {
+      spTotal += (epic.done + epic.inProgress + epic.toDo);
+      doneTotal += epic.done;
+      inProgressTotal += epic.inProgress;
+    });
 
-      return result;
-    }
+    result.done = Math.round(doneTotal / spTotal * 100);
+    result.inProgress = Math.round(inProgressTotal / spTotal * 100);
+    result.toDo = 100 - (result.done + result.inProgress);
 
-    return DataMapper;
-  }())
+    return result;
+  }
+}())
