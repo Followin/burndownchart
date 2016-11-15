@@ -33,6 +33,7 @@
         marker: {
           enabled: true
         },
+        type: "spline",
         tooltip: true,
         shadow: true,
         showInNavigator: true
