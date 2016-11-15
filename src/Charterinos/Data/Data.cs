@@ -7,10 +7,15 @@ namespace Charterinos.Data
 {
 	public static class Data
 	{
-		public static Dictionary<string, Dictionary<DateTime, int>> Burndown => new Dictionary<string, Dictionary<DateTime, int>>
+		public static Burndown Burndown => new Burndown
 		{
-			["First"] = GetRandomDict(),
-			["Second"] = GetRandomDict()
+			StartDate = new DateTime(2016, 1, 1),
+			EndDate = new DateTime(2016, 12, 31),
+			Series = new Dictionary<string, Dictionary<DateTime, int>>
+				{
+					["First"] = GetRandomDict(),
+					["Second"] = GetRandomDict()
+				}
 		};
 
 		public static Dictionary<string, Epic> Epics => new Dictionary<string, Epic>

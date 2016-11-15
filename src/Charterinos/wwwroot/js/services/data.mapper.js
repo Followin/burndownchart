@@ -10,11 +10,9 @@
 
   DataMapper.prototype.mapBurndown = function(data) {
     var result = [],
-      maxValue = Number.MIN_VALUE,
-      minDate = Date.MAX_VALUE,
-      maxDate = Date.MIN_VALUE;
+        maxValue = Number.MIN_VALUE;
 
-    data.forEachOwnProperty(function(chartDict, chartName) {
+    data.series.forEachOwnProperty(function(chartDict, chartName) {
       var chartData = [];
       chartDict.forEachOwnProperty(function(value, date) {
         date = new Date(date);
@@ -23,12 +21,6 @@
           date.getTime(),
           value
         ]);
-
-        if (date > maxDate) {
-          maxDate = date;
-        } else if (date < minDate) {
-          minDate = date;
-        }
 
         if (value > maxValue) {
           maxValue = value;
@@ -51,16 +43,17 @@
       name: "Ideal",
       data: [
         [
-          minDate.getTime(),
+          new Date(data.startDate).getTime(),
           maxValue
         ],
         [
-          maxDate.getTime(),
+          new Date(data.endDate).getTime(),
           0
         ]
       ]
     });
 
+    console.log(result);
     return result;
   };
 
@@ -88,7 +81,6 @@
     var
       doneTotal = 0,
       inProgressTotal = 0,
-      toDoTotal = 0,
       spTotal = 0,
       result = {};
 
